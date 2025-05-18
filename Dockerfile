@@ -1,14 +1,11 @@
-# Imagine de bază cu Maven + JDK 21
-FROM maven:3.9.6-eclipse-temurin-21
-
-# Setează directorul de lucru în container
+# Stage 1: Build Maven project
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
-
-# Copiază toate fișierele în container
 COPY . .
+RUN mvn clean package -DskipTests
 
-# Compilează și creează JAR-ul shaded
-RUN mvn clean package -e
-
-# Rulează aplicația folosind JAR-ul generat de shade plugin
-CMD ["java", "-jar", "target/gps-server-render-1.0-SNAPSHOT-shaded.jar"]
+# Stage 2: Run the jar
+FROM eclipse-temurin:21-jdk
+WORKDIR /app
+COPY --from=build /app/target/gps-server-render-1.0-SNAPSHOT-shaded.jar app.jar
+CMD ["java", "-jar", "app.jar"]
