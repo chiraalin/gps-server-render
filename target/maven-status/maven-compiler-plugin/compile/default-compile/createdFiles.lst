@@ -1,0 +1,5 @@
+aplicatie\bazadate\BazaDate.class
+aplicatie\modele\Traseu.class
+aplicatie\gps\ServerGPSReceiver.class
+aplicatie\modele\TraseuDAO.class
+aplicatie\gps\ServerGPSReceiver$GpsHandler.class
