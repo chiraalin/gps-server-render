@@ -1,8 +1,8 @@
 package aplicatie.gps;
 
-import aplicatie.bazadate.BazaDate;
-import aplicatie.bazadate.TraseuDAO;
-import aplicatie.modele.Traseu;
+import bazadate.BazaDate;
+import modele.Traseu;
+import modele.TraseuDAO;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -41,7 +41,7 @@ public class ServerGPSReceiver {
         }
     }
 
-    static class GpsHandler implements HttpHandler {
+    public static class GpsHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
             if (!exchange.getRequestMethod().equalsIgnoreCase("GET")) {
@@ -109,5 +109,10 @@ public class ServerGPSReceiver {
                 os.write(response.getBytes());
             }
         }
+    }
+
+    // 🔹 Punctul de intrare pentru Render
+    public static void main(String[] args) {
+        startServer();
     }
 }
