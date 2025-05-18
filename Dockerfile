@@ -1,10 +1,10 @@
-# Stage 1: Build Maven project
+# Etapa 1: Build cu Maven
 FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
-# Stage 2: Run the jar
+# Etapa 2: Imagine finală doar cu JAR-ul
 FROM eclipse-temurin:21-jdk
 WORKDIR /app
 COPY --from=build /app/target/gps-server-render-1.0-SNAPSHOT-shaded.jar app.jar
