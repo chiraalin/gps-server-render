@@ -11,6 +11,13 @@ public class BazaDate {
 
 
     public static Connection conectare() throws SQLException {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("Nu s-a putut încărca driverul JDBC pentru SQL Server", e);
+        }
+
         return DriverManager.getConnection(URL, UTILIZATOR, PAROLA);
     }
+
 }
