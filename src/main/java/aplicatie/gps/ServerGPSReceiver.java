@@ -1,8 +1,8 @@
 package aplicatie.gps;
 
-import bazadate.BazaDate;
-import modele.Traseu;
-import modele.TraseuDAO;
+import aplicatie.bazadate.BazaDate;
+import aplicatie.modele.Traseu;
+import aplicatie.modele.TraseuDAO;
 
 import java.io.IOException;
 import java.io.OutputStream;
