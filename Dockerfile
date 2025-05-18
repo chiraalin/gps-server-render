@@ -4,8 +4,8 @@ WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
-# Etapa 2: Imagine finală doar cu JAR-ul
+# Etapa 2: Imagine finală cu .jar-ul normal
 FROM eclipse-temurin:21-jdk
 WORKDIR /app
-COPY --from=build /app/target/gps-server-render-1.0-SNAPSHOT-shaded.jar app.jar
+COPY --from=build /app/target/gps-server-render-1.0-SNAPSHOT.jar app.jar
 CMD ["java", "-jar", "app.jar"]
